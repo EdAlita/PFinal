@@ -95,6 +95,9 @@ public class panelAltaTarjeta extends JPanel {
 				System.out.println();
 				
 				for(int i=0; i<10;i++){
+					//lnombre = new Label(tarjetas.obtenerNombre(i));
+					//lnombre.setPreferredSize(new Dimension(150,25));
+					//pd.add(lnombre);
 					
 					ltotal = new Label("$"+tarjetas.obtenerTotal(i));
 					ltotal.setPreferredSize(new Dimension(150,25));
