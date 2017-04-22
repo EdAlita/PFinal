@@ -17,7 +17,7 @@ public class panelControles extends JPanel implements ActionListener{
 	                btIngresoExtra,
 	                btconfiguracion;
 
-	public panelControles(){
+	public panelControles(panelDatos pd){
 		super();
 		this.setPreferredSize(new Dimension(600,125));
 		this.setBackground( Color.blue);
@@ -26,7 +26,8 @@ public class panelControles extends JPanel implements ActionListener{
 		this.btATarjeta.setPreferredSize(new Dimension(150,50));
 		this.btATarjeta.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				ventanaAltaTarjeta win = new ventanaAltaTarjeta();
+				ventanaAltaTarjeta win = new ventanaAltaTarjeta(pd);
+				
 			}
 		});
 		this.add(this.btATarjeta);

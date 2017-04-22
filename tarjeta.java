@@ -18,7 +18,27 @@ public class tarjeta {
 	}
 
 	public void realizarCargo(cargo cargo){
-		this.total += cargo.getGasto(); 
+		this.total += cargo.getGasto();
+	}
+
+	public String getNombre() {
+		return Nombre;
+	}
+
+	public int getFpago() {
+		return fpago;
+	}
+
+	public int getFcorte() {
+		return fcorte;
+	}
+
+	public double getLcargo() {
+		return lcargo;
+	}
+
+	public double getTotal() {
+		return total;
 	}
 	
 }

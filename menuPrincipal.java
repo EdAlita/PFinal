@@ -12,8 +12,8 @@ public class menuPrincipal extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocation(700, 300);
-		panelControles pc = new panelControles();
 		panelDatos pd = new panelDatos();
+		panelControles pc = new panelControles(pd);
 		this.add(pc, BorderLayout.NORTH);
 		this.add(pd);
 		
