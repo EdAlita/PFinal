@@ -1,9 +1,11 @@
 package PFinal;
 
 public class tarjetas {
+	
+	private tarjeta[] tarjetas;
 
 	public tarjetas() {
-		// TODO Auto-generated constructor stub
+		//hola 
 	}
 
 }
