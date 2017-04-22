@@ -31,18 +31,9 @@ public class panelControles extends JPanel implements ActionListener{
 		});
 		this.add(this.btATarjeta);
 		
-		
-		this.btACategoria = new JButton("ALta Categoria");
-		this.btACategoria.setPreferredSize(new Dimension(150,50));
-		this.add(this.btACategoria);
-		
 		this.btGasto = new JButton("Gasto");
 		this.btGasto.setPreferredSize(new Dimension(150,50));
 		this.add(this.btGasto);
-		
-		this.btEfectivo = new JButton("Efectivo");
-		this.btEfectivo.setPreferredSize(new Dimension(150,50));
-		this.add(this.btEfectivo);
 		
 		this.btIngresoExtra = new JButton("Ingreso Extra");
 		this.btIngresoExtra.setPreferredSize(new Dimension(150,50));

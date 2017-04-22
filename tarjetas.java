@@ -5,7 +5,7 @@ public class tarjetas {
 	private tarjeta[] tarjetas;
 
 	public tarjetas() {
-		//hola 
+		tarjeta[] tarjetas = new tarjeta[10];
 	}
 
 }
