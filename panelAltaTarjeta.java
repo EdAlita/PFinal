@@ -110,7 +110,7 @@ public class panelAltaTarjeta extends JPanel {
 					pd.add(ldpago);
 					pd.updateUI();}
 				}catch(NumberFormatException ex){
-					JOptionPane.showMessageDialog(null,"Cheque sus datos");
+					JOptionPane.showMessageDialog(null,"Verifique que sus datos tengan el formato correcto");
 				}
 			}
 		});
