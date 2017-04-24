@@ -7,23 +7,20 @@ import javax.swing.JFrame;
 public class ventanaGasto extends JFrame{
 
 	
-	public ventanaGasto(){
+	public ventanaGasto(panelDatos pd){
 	
 		super("Gastos");
 		
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 		this.setResizable(false);
 		this.setLocation(800, 200);		
 		
-		panelGastos panel= new panelGastos(); 
+		panelGastos panel= new panelGastos(pd,this); 
 		this.add(panel); 
 		
 		this.pack();
 		this.setVisible(true);
 	}
 	
-	public static void main(String[] args){
-		ventanaGasto win= new ventanaGasto(); 
-	}
 }

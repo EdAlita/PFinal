@@ -34,6 +34,12 @@ public class panelControles extends JPanel implements ActionListener{
 		
 		this.btGasto = new JButton("Gasto");
 		this.btGasto.setPreferredSize(new Dimension(150,50));
+		this.btGasto.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				ventanaGasto vg = new ventanaGasto(pd);
+			}
+			
+		});
 		this.add(this.btGasto);
 		
 		this.btIngresoExtra = new JButton("Ingreso Extra");

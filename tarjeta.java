@@ -5,6 +5,7 @@ public class tarjeta {
 	private String Nombre;
 	private int fpago,
 				fcorte;
+	private static int n;
 	private double lcargo,
 				   total;
 				
@@ -15,10 +16,15 @@ public class tarjeta {
 		this.fcorte=fcorte; 
 		this.lcargo=lcargo; 
 		this.total=0;
+		this.n+=1;
 	}
 
-	public void realizarCargo(cargo cargo){
-		this.total += cargo.getGasto();
+	public static int getN() {
+		return n;
+	}
+
+	public void realizarCargo(double cargo){
+		this.total += cargo;
 	}
 
 	public String getNombre() {

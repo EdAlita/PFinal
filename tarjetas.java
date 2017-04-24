@@ -12,7 +12,7 @@ public class tarjetas {
 		for(int i=0;i<this.tarjetas.length;i++){
 			if(tarjetas[i]==null){
 				tarjetas[i]=tarjeta;
-				System.out.println(tarjetas[i].toString());
+				System.out.println(tarjetas[i].getNombre());
 				break;
 			}
 		}
@@ -36,5 +36,13 @@ public class tarjetas {
 	
 	public double obtenerTotal(int num){
 		return tarjetas[num].getTotal();
+	}
+	
+	public int obtenerLength(){
+		return tarjetas.length;
+	}
+	
+	public void hacerCargo(int num, double cargo){
+		tarjetas[num].realizarCargo(cargo);
 	}
 }

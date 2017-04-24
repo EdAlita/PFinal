@@ -19,6 +19,10 @@ public class panelAltaTarjeta extends JPanel {
 				  ldpago,
 				  llcredito,
 				  ltotal;
+	private Label[] Tarjeta,
+    				Gasto,
+    				FCorte,
+                    FPago;
 	private TextField tfNombre,
 	                  tfdcorte,
 	                  tfdpago,
@@ -31,6 +35,7 @@ public class panelAltaTarjeta extends JPanel {
 	private double lcredito;
 	protected tarjetas tarjetas;
 	private int n;
+	private double pago;
 	
 	
 	public panelAltaTarjeta(JFrame frame, panelDatos pd){
@@ -38,7 +43,12 @@ public class panelAltaTarjeta extends JPanel {
 		this.setPreferredSize(new Dimension(450,200));
 		this.setBackground( Color.LIGHT_GRAY);
 		setFont(new Font("Default",Font.BOLD,18));
-		tarjetas= new tarjetas();
+		tarjetas=pd.getTarjetas();
+		
+		this.Tarjeta=pd.getTarjeta();
+		this.Gasto=pd.getGasto();
+		this.FCorte=pd.getFCorte();
+		this.FPago=pd.getFPago();
 		
 		win=frame;
 		
@@ -84,31 +94,33 @@ public class panelAltaTarjeta extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				try{
-				n+=1;
 				Nombre=tfNombre.getText();
 				dcorte=Integer.parseInt(tfdcorte.getText());
 				dpago=Integer.parseInt(tfdpago.getText());
 				lcredito=Double.parseDouble(tflcredito.getText());
 				tarjeta tmp = new tarjeta(Nombre,dpago,dcorte,lcredito);
 				tarjetas.agregarTarjeta(tmp);
+				n=tarjeta.getN();
 				
-				for(int i=0; i<n;i++){
-					lnombre = new Label(tarjetas.obtenerNombre(i));
-					lnombre.setPreferredSize(new Dimension(150,25));
-					pd.add(lnombre);
+					Tarjeta[n-1] = new Label(tarjetas.obtenerNombre(n-1));
+					Tarjeta[n-1].setPreferredSize(new Dimension(150,25));
+					pd.add(Tarjeta[n-1]);
 					
-					ltotal = new Label("$"+tarjetas.obtenerTotal(i));
-					ltotal.setPreferredSize(new Dimension(150,25));
-					pd.add(ltotal);
+					pago=tarjetas.obtenerTotal(n-1);
+					Gasto[n-1]= new Label("$"+pago);
+					Gasto[n-1].setPreferredSize(new Dimension(150,25));
+					pd.add(Gasto[n-1]);
 					
-					ldcorte = new Label(" "+tarjetas.obtenerDCorte(i));
-					ldcorte.setPreferredSize(new Dimension(150,25));
-					pd.add(ldcorte);
+					FCorte[n-1] = new Label(" "+tarjetas.obtenerDCorte(n-1));
+					FCorte[n-1].setPreferredSize(new Dimension(150,25));
+					pd.add(FCorte[n-1]);
 					
-					ldpago = new Label(" "+tarjetas.obtenerDPago(i));
-					ldpago.setPreferredSize(new Dimension(150,25));
-					pd.add(ldpago);
-					pd.updateUI();}
+					FPago[n-1] = new Label(" "+tarjetas.obtenerDPago(n-1));
+					FPago[n-1].setPreferredSize(new Dimension(150,25));
+					pd.add(FPago[n-1]);
+					
+					pd.setN(n);
+					pd.updateUI();
 				}catch(NumberFormatException ex){
 					JOptionPane.showMessageDialog(null,"Cheque sus datos");
 				}
@@ -117,6 +129,10 @@ public class panelAltaTarjeta extends JPanel {
 		this.add(btaceptar);
 	}
 	
+	public int getN() {
+		return n;
+	}
+
 	public tarjetas getTarjetas() {
 		return tarjetas;
 	}
