@@ -18,9 +18,9 @@ public class tarjetas {
 		}
 	}
 	
-	/*public String obtenerNombre(int num){
+	public String obtenerNombre(int num){
 		return tarjetas[num].getNombre();
-	}*/
+	}
 
 	public int obtenerDPago(int num){
 		return tarjetas[num].getFpago();

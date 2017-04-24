@@ -30,7 +30,8 @@ public class panelAltaTarjeta extends JPanel {
 	private String Nombre;
 	private double lcredito;
 	protected tarjetas tarjetas;
-	private boolean presiono;
+	private int n;
+	
 	
 	public panelAltaTarjeta(JFrame frame, panelDatos pd){
 		super();
@@ -38,7 +39,6 @@ public class panelAltaTarjeta extends JPanel {
 		this.setBackground( Color.LIGHT_GRAY);
 		setFont(new Font("Default",Font.BOLD,18));
 		tarjetas= new tarjetas();
-		presiono=false;
 		
 		win=frame;
 		
@@ -84,7 +84,7 @@ public class panelAltaTarjeta extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				try{
-				presiono=true;
+				n+=1;
 				Nombre=tfNombre.getText();
 				dcorte=Integer.parseInt(tfdcorte.getText());
 				dpago=Integer.parseInt(tfdpago.getText());
@@ -92,12 +92,10 @@ public class panelAltaTarjeta extends JPanel {
 				tarjeta tmp = new tarjeta(Nombre,dpago,dcorte,lcredito);
 				tarjetas.agregarTarjeta(tmp);
 				
-				System.out.println();
-				
-				for(int i=0; i<10;i++){
-					//lnombre = new Label(tarjetas.obtenerNombre(i));
-					//lnombre.setPreferredSize(new Dimension(150,25));
-					//pd.add(lnombre);
+				for(int i=0; i<n;i++){
+					lnombre = new Label(tarjetas.obtenerNombre(i));
+					lnombre.setPreferredSize(new Dimension(150,25));
+					pd.add(lnombre);
 					
 					ltotal = new Label("$"+tarjetas.obtenerTotal(i));
 					ltotal.setPreferredSize(new Dimension(150,25));
@@ -109,7 +107,8 @@ public class panelAltaTarjeta extends JPanel {
 					
 					ldpago = new Label(" "+tarjetas.obtenerDPago(i));
 					ldpago.setPreferredSize(new Dimension(150,25));
-					pd.add(ldpago);}
+					pd.add(ldpago);
+					pd.updateUI();}
 				}catch(NumberFormatException ex){
 					JOptionPane.showMessageDialog(null,"Cheque sus datos");
 				}
@@ -122,8 +121,5 @@ public class panelAltaTarjeta extends JPanel {
 		return tarjetas;
 	}
 	
-	public boolean getPresiono(){
-		return presiono;
-	}
 
 }
