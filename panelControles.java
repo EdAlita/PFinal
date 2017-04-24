@@ -41,13 +41,33 @@ public class panelControles extends JPanel implements ActionListener{
 			
 		});
 		this.add(this.btGasto);
-		
+			public void actionPerformed(ActionEvent e){
+				ventanaGasto win = new ventanaGasto();
+				
+			}
+		});
+
+		this.add(this.btGasto);	
+
+
 		this.btIngresoExtra = new JButton("Ingreso Extra");
 		this.btIngresoExtra.setPreferredSize(new Dimension(150,50));
+		this.btIngresoExtra.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				ventanaIngresoExtra win = new ventanaIngresoExtra();
+				
+			}
+		});
+
 		this.add(this.btIngresoExtra);
 		
-		this.btconfiguracion = new JButton("Boton Configuracion");
+		this.btconfiguracion = new JButton("Botón Configuracion");
 		this.btconfiguracion.setPreferredSize(new Dimension(150,50));
+		this.btconfiguracion.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				ventanaConfiguracion win= new ventanaConfiguracion(); 
+			}				
+		});
 		this.add(this.btconfiguracion);
 		
 	}
