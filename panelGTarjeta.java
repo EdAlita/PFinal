@@ -9,21 +9,25 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class panelGTarjeta extends JPanel implements ActionListener{
 	
-	
 	private Label etiqueta, 
 				  tarjeta,
-				  pago; 
+				  pago,
+				  categoria; 
 	private Label[] Pago;
 	private JTextField gasto; 
-	private JComboBox cb;
+	private JComboBox cb,
+					  cb2;
 	private tarjetas tarjetas;
 	private JButton aceptar; 
-	private String[] nombres;
+	private String[] nombres,
+	                 categorias;
+	private gasto gastos;
 	private int n;
 	private double cargo;
 	private panelDatos pd;
@@ -35,6 +39,8 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 		this.setPreferredSize(new Dimension(425,200));
 		this.setBackground( Color.LIGHT_GRAY);
 		this.setFont(new Font("Default",Font.BOLD,18));
+		this.categorias=pd.getCategorias();
+		this.gastos=pd.getGastos();
 		this.tarjetas=pd.getTarjetas();
 		this.pd=pd;
 		this.win=win;
@@ -54,9 +60,17 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 		this.tarjeta.setPreferredSize(new Dimension(200,25));
 		this.add(tarjeta);
 		
-		this.cb= new JComboBox(nombres);
+		this.cb= new JComboBox(this.nombres);
 		this.cb.setPreferredSize(new Dimension(200,25));
 		this.add(cb);
+		
+		this.tarjeta= new Label("Categoria ");
+		this.tarjeta.setPreferredSize(new Dimension(200,25));
+		this.add(tarjeta);
+		
+		this.cb2= new JComboBox(this.categorias);
+		this.cb2.setPreferredSize(new Dimension(200,25));
+		this.add(cb2);
 		
 		this.pago= new Label("Monto: ");
 		this.pago.setPreferredSize(new  Dimension(200,25));
@@ -79,10 +93,19 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 				this.hola=this.cb.getSelectedItem().toString();
 				if(hola==tarjetas.obtenerNombre(i)){
 					cargo=Double.parseDouble(this.gasto.getText());
+					if((cargo+tarjetas.obtenerTotal(i))<tarjetas.obtenerLCredito(i)){
 					tarjetas.hacerCargo(i, cargo);
+					this.gastos.setCategorias(this.cb2.getSelectedItem().toString());
+					this.gastos.setNombre(hola);
+					this.gastos.setGasto(cargo);
 					Pago[i].setText("$"+tarjetas.obtenerTotal(i));
 				    this.win.dispose();
 				    break;
+				    }
+					else{
+					JOptionPane.showMessageDialog(null, "El limite de credito ya se excedio");
+					break;
+					}
 				}
 			}
 		}

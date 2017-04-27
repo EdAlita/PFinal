@@ -19,11 +19,23 @@ public class panelDatos extends JPanel {
     			    Gasto,
                     FCorte,
                     FPago;
-	private panelAltaTarjeta tmp;
 	private tarjetas tarjetas;
+	private gasto gasto;
+	private String[] categorias;
 	private int n;
+	private boolean presiono;
 
 	
+	public boolean isPresiono() {
+		return presiono;
+	}
+
+
+	public void setPresiono(boolean presiono) {
+		this.presiono = presiono;
+	}
+
+
 	public int getN() {
 		return n;
 	}
@@ -50,6 +62,14 @@ public class panelDatos extends JPanel {
 		Gasto = new Label[10];
 		FPago = new Label[10];
 		FCorte = new Label[10];
+		presiono = false;
+		categorias = new String[10];
+		
+		categorias[0]="Personal";
+		categorias[1]="Trabajo";
+		categorias[2]="Escuela";
+		
+		this.gasto=new gasto();
 		
 		tarjetas = new tarjetas();
 		this.setPreferredSize(new Dimension(700,400));
@@ -72,6 +92,25 @@ public class panelDatos extends JPanel {
 		this.lFPago.setPreferredSize(new Dimension(150,25));
 		this.add(lFPago);
 		}
+
+
+	public void setGasto(gasto gasto) {
+		this.gasto = gasto;
+	}
+	
+	public gasto getGastos(){
+		return gasto;
+	}
+
+
+	public String[] getCategorias() {
+		return categorias;
+	}
+
+
+	public void setCategorias(String[] categorias) {
+		this.categorias = categorias;
+	}
 
 
 	public Label[] getTarjeta() {

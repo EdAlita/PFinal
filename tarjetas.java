@@ -12,7 +12,6 @@ public class tarjetas {
 		for(int i=0;i<this.tarjetas.length;i++){
 			if(tarjetas[i]==null){
 				tarjetas[i]=tarjeta;
-				System.out.println(tarjetas[i].getNombre());
 				break;
 			}
 		}

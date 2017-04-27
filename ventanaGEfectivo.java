@@ -9,9 +9,12 @@ import javax.swing.JTextField;
 public class ventanaGEfectivo extends JFrame{
 	
 	
-	public ventanaGEfectivo(){
+	public ventanaGEfectivo(panelDatos pd){
 		super("Gasto efectivo");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		panelGEfectivo pge = new panelGEfectivo(pd,this);
+		this.add(pge);
 		
 		this.setResizable(false);
 		this.setLocation(800, 200);

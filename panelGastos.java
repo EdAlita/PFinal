@@ -45,7 +45,7 @@ public class panelGastos extends JPanel{
 		this.efectivo.setPreferredSize(new Dimension(200,50));
 		this.efectivo.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				ventanaGEfectivo win = new ventanaGEfectivo();
+				ventanaGEfectivo win = new ventanaGEfectivo(pd);
 			}
 		});	
 		this.add(this.efectivo);

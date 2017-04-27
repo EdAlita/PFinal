@@ -24,7 +24,7 @@ public class tarjeta {
 	}
 
 	public void realizarCargo(double cargo){
-		this.total += cargo;
+		this.total =this.total+cargo;
 	}
 
 	public String getNombre() {
