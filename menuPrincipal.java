@@ -14,6 +14,9 @@ public class menuPrincipal extends JFrame {
 		this.setLocation(300, 100);
 		panelDatos pd = new panelDatos();
 		panelControles pc = new panelControles(pd);
+		panelresultados pr = new panelresultados(pd);
+		pd.setPr(pr);
+		this.add(pr, BorderLayout.SOUTH);
 		this.add(pc, BorderLayout.NORTH);
 		this.add(pd);
 		panelTotal pt= new panelTotal(); 

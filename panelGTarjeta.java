@@ -18,7 +18,9 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 	private Label etiqueta, 
 				  tarjeta,
 				  pago,
-				  categoria; 
+				  categoria,
+				  total,
+				  queda; 
 	private Label[] Pago;
 	private JTextField gasto; 
 	private JComboBox cb,
@@ -33,7 +35,8 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 	private panelDatos pd;
 	private String hola;
 	private JFrame win;
-	
+	private panelresultados pr;
+	private double num;
 	public panelGTarjeta(panelDatos pd,JFrame win){
 		super();
 		this.setPreferredSize(new Dimension(425,200));
@@ -43,13 +46,18 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 		this.gastos=pd.getGastos();
 		this.tarjetas=pd.getTarjetas();
 		this.pd=pd;
+		this.pr=pd.getPr();
+		this.total=pr.getLresultado();
+		this.queda=pr.getLqueda();
 		this.win=win;
 		this.Pago=pd.getGasto();
 		tarjetas = pd.getTarjetas();
 		n = pd.getN();
 		nombres = new String[n];
 		for(int i=0;i<n;i++){
+			if(tarjetas.obtenerNombre(i)!="Efectivo"){
 			nombres[i]=tarjetas.obtenerNombre(i);
+			}
 		}
 		
 		this.etiqueta= new Label("Seleccione la tarjeta y el monto que gasto"); 
@@ -99,6 +107,13 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 					this.gastos.setNombre(hola);
 					this.gastos.setGasto(cargo);
 					Pago[i].setText("$"+tarjetas.obtenerTotal(i));
+					pd.setPresiono2(true);
+					for(int j =0; j<pd.getN();j++){
+						num=+tarjetas.obtenerTotal(j);
+					}
+					total.setText("Total $ "+num);
+					queda.setText("Resta de ingreso Mensual $ "+(pd.getIngresoM()-num));
+					pr.updateUI();
 				    this.win.dispose();
 				    break;
 				    }

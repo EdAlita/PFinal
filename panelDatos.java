@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.Label;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class panelDatos extends JPanel {
@@ -23,9 +24,42 @@ public class panelDatos extends JPanel {
 	private gasto gasto;
 	private String[] categorias;
 	private int n;
-	private boolean presiono;
+	private boolean presiono,
+	                presiono2;
+	public boolean isPresiono2() {
+		return presiono2;
+	}
+
+
+	public void setPresiono2(boolean presiono2) {
+		this.presiono2 = presiono2;
+	}
+
+
+	private double ingresoM;
+	private panelresultados pr;
 
 	
+	public panelresultados getPr() {
+		return pr;
+	}
+
+
+	public void setPr(panelresultados pr) {
+		this.pr = pr;
+	}
+
+
+	public double getIngresoM() {
+		return ingresoM;
+	}
+
+
+	public void setIngresoM(double ingresoM) {
+		this.ingresoM = ingresoM;
+	}
+
+
 	public boolean isPresiono() {
 		return presiono;
 	}
@@ -63,11 +97,14 @@ public class panelDatos extends JPanel {
 		FPago = new Label[10];
 		FCorte = new Label[10];
 		presiono = false;
+		presiono2 = false;
 		categorias = new String[10];
 		
 		categorias[0]="Personal";
 		categorias[1]="Trabajo";
 		categorias[2]="Escuela";
+		
+		this.ingresoM=Double.parseDouble(JOptionPane.showInputDialog("Ingresa Saldo Mensual"));
 		
 		this.gasto=new gasto();
 		

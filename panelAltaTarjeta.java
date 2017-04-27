@@ -123,9 +123,10 @@ public class panelAltaTarjeta extends JPanel {
 					pd.updateUI();
 				}catch(NumberFormatException ex){
 					JOptionPane.showMessageDialog(null,"Verifique que sus datos tengan el formato correcto");
+				}catch(ArrayIndexOutOfBoundsException ex){
+					JOptionPane.showMessageDialog(null,"Has excedido el limite de trajetas");
 				}
-			}
-		});
+		}});
 		this.add(btaceptar);
 	}
 	

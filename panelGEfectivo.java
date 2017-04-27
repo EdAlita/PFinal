@@ -14,7 +14,9 @@ import javax.swing.JTextField;
 public class panelGEfectivo extends JPanel implements ActionListener{
 
 	private Label etiqueta,
-				  cantidad; 
+				  cantidad,
+				  total,
+				  queda; 
 	private JTextField gasto; 
 	
 	private JButton aceptar; 
@@ -26,6 +28,8 @@ public class panelGEfectivo extends JPanel implements ActionListener{
 					FPago;
 	private int n;
 	private JFrame frame;
+	private panelresultados pr;
+	private double num;
 
 	public panelGEfectivo(panelDatos pd, JFrame frame){
 		this.tarjetas=pd.getTarjetas();
@@ -35,6 +39,9 @@ public class panelGEfectivo extends JPanel implements ActionListener{
 		this.FCorte=pd.getFCorte();
 		this.FPago=pd.getFPago();
 		this.frame=frame;
+		this.pr=pd.getPr();
+		this.total=pr.getLresultado();
+		this.queda=pr.getLqueda();
 		
 		this.setPreferredSize(new Dimension(425,200));
 		this.setBackground( Color.LIGHT_GRAY);
@@ -70,12 +77,12 @@ public class panelGEfectivo extends JPanel implements ActionListener{
 		
 		if(pd.isPresiono()){
 			for(int i=0;i<tarjetas.obtenerLength();i++){ 
+			if(tarjetas.obtenerNombre(i)=="Efectivo"){
 			tarjetas.hacerCargo(i, getGasto());
 			Gasto[i].setText("$"+tarjetas.obtenerTotal(i));
 			pd.updateUI();
 			this.frame.dispose();
-			System.out.println("entro al if");
-			break;
+			break;}
 			}
 		}else{
 		
@@ -99,6 +106,12 @@ public class panelGEfectivo extends JPanel implements ActionListener{
 		FPago[n-1] = new Label(" "+tarjetas.obtenerDPago(n-1));
 		FPago[n-1].setPreferredSize(new Dimension(150,25));
 		pd.add(FPago[n-1]);
+		
+		for(int j =0; j<pd.getN();j++){
+			num=+tarjetas.obtenerTotal(j);
+			System.out.println(tarjetas.obtenerNombre(j));
+		}
+		System.out.println(num);
 		
 		pd.setN(n);
 		pd.updateUI();

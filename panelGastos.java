@@ -54,7 +54,7 @@ public class panelGastos extends JPanel{
 		this.altaCategoria.setPreferredSize(new Dimension(200,50));
 		this.altaCategoria.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				ventanaGAltaCategoria win = new ventanaGAltaCategoria();
+				ventanaGAltaCategoria win = new ventanaGAltaCategoria(pd);
 			}
 		});;
 		this.add(this.altaCategoria);
