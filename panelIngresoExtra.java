@@ -1,4 +1,4 @@
-package PFinal;
+		package PFinal;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -26,6 +26,7 @@ public class panelIngresoExtra extends JPanel implements ActionListener {
 	private JFrame win; 
 	
 	private double cantidad; 
+
 	
 	public panelIngresoExtra(JFrame frame){
 		super(); 
@@ -51,14 +52,16 @@ public class panelIngresoExtra extends JPanel implements ActionListener {
 		this.lEspacio.setPreferredSize(new Dimension(450,25));
 		this.add(this.lEspacio);
 		
-		
 		this.btAceptar= new JButton("Aceptar");
 		this.btAceptar.setPreferredSize(new Dimension(200,30));
 		this.btAceptar.addActionListener(new ActionListener(){ 		
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 			
 				frame.dispose();
 				try{
+					cantidad= Double.parseDouble(tfCantidad.getText());
+					System.out.println(cantidad);
+					
 					
 				}
 				catch(NumberFormatException ex){

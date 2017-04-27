@@ -11,7 +11,7 @@ public class ventanaGEfectivo extends JFrame{
 	
 	public ventanaGEfectivo(panelDatos pd){
 		super("Gasto efectivo");
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		panelGEfectivo pge = new panelGEfectivo(pd,this);
 		this.add(pge);

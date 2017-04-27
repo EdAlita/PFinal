@@ -6,7 +6,7 @@ public class ventanaConfiguracion extends JFrame{
 
 	public ventanaConfiguracion(){
 		super("Configuración del programa"); 
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		this.setResizable(false);
 		this.setLocation(800,200);
