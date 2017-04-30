@@ -40,17 +40,19 @@ public class panelConfiguracion extends JPanel implements ActionListener{
 		this.pd= pd; 
 		this.win=frame;
 		
-	/*	this.categorias=pd.getCategorias();
+		this.categorias=pd.getCategorias();
 		this.gastos=pd.getGastos();
 		this.tarjetas=pd.getTarjetas();
 		
+		
 		this.setBackground( Color.LIGHT_GRAY);
-		setFont(new Font("Default",Font.BOLD,18));
+		setFont(new Font("Default",Font.BOLD,25));
 
 		this.win = frame; 
 		
+
 		this.instruccion = new JLabel("Que modificacion quiere hacer"); 
-		this.instruccion.setPreferredSize(new Dimension(375,25));
+		this.instruccion.setPreferredSize(new Dimension(375,50));
 		this.add(instruccion); 
 		
 
@@ -58,12 +60,12 @@ public class panelConfiguracion extends JPanel implements ActionListener{
 		this.lTarjeta.setPreferredSize(new Dimension(375,25));
 		this.add(this.lTarjeta);
 		
+		/*
 		this.cbTarjetas= new JComboBox(this.nombres);
 		this.cbTarjetas.setPreferredSize(new Dimension(200,25));
 		this.add(cbTarjetas);
-		
-		
 		*/
+		
 		this.btRegresar= new JButton("Regresar"); 
 		this.btRegresar.setPreferredSize(new Dimension(150,30));
 		
