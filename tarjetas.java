@@ -44,4 +44,15 @@ public class tarjetas {
 	public void hacerCargo(int num, double cargo){
 		tarjetas[num].realizarCargo(cargo);
 	}
+	
+	public void eliminar(int i){
+		int num=0;
+		tarjetas[i]=null;
+		for(int j=0;j<tarjetas.length;j++){
+		if(tarjetas[j]!=null){
+			tarjetas[num]=tarjetas[j];
+			num++;
+		}}
+		
+	}
 }

@@ -104,7 +104,7 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 					if((cargo+tarjetas.obtenerTotal(i))<tarjetas.obtenerLCredito(i)){
 					tarjetas.hacerCargo(i, cargo);
 					this.gastos.setCategorias(this.cb2.getSelectedItem().toString());
-					this.gastos.setNombre(hola);
+					this.gastos.setNombre(this.cb.getSelectedItem().toString());
 					this.gastos.setGasto(cargo);
 					Pago[i].setText("$"+tarjetas.obtenerTotal(i));
 					pd.setPresiono2(true);

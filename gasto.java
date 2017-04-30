@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class gasto {
 	private ArrayList<String> nombre,
-					 categorias;
+					 		 categorias;
 	private ArrayList<Double> gasto;
 	
 
@@ -19,7 +19,7 @@ public class gasto {
 	}
 	
 	public void setCategorias(String categorias){
-		this.nombre.add(categorias);
+		this.categorias.add(categorias);
 	}
 	
 	public void setGasto(Double gasto){

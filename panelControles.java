@@ -8,12 +8,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class panelControles extends JPanel implements ActionListener{
+public class panelControles extends JPanel{
 	
 	private JButton btATarjeta,
-	                btACategoria,
 	                btGasto,
-	                btEfectivo,
+	                btGenerarResumen,
 	                btIngresoExtra,
 	                btconfiguracion;
 
@@ -62,12 +61,14 @@ public class panelControles extends JPanel implements ActionListener{
 		
 		this.add(this.btconfiguracion);
 		
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		this.btGenerarResumen = new JButton("Boton Configuracion");
+		this.btGenerarResumen.setPreferredSize(new Dimension(150,50));
+		this.btGenerarResumen.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				ventanaGenerarResumen win= new ventanaGenerarResumen(pd); 
+			}
+		});
 		
+		this.add(this.btGenerarResumen);
 	}
-	
 }

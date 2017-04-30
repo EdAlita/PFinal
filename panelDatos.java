@@ -107,8 +107,8 @@ public class panelDatos extends JPanel {
 		this.ingresoM=Double.parseDouble(JOptionPane.showInputDialog("Ingresa Saldo Mensual"));
 		
 		this.gasto=new gasto();
-		
 		tarjetas = new tarjetas();
+		
 		this.setPreferredSize(new Dimension(700,400));
 		this.setBackground(Color.gray);
 		setFont(new Font("Default",Font.BOLD,18));
