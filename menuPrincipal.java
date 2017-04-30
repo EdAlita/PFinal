@@ -16,6 +16,8 @@ public class menuPrincipal extends JFrame {
 		panelControles pc = new panelControles(pd);
 		this.add(pc, BorderLayout.NORTH);
 		this.add(pd);
+		panelTotal pt= new panelTotal(); 
+		this.add(pt, BorderLayout.SOUTH);
 		
 		this.pack();
 		this.setVisible(true);
