@@ -46,7 +46,7 @@ public class panelControles extends JPanel implements ActionListener{
 		this.btIngresoExtra.setPreferredSize(new Dimension(150,50));
 		this.btIngresoExtra.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				ventanaIngresoExtra win= new ventanaIngresoExtra();
+				ventanaIngresoExtra win= new ventanaIngresoExtra(pd);
 			}
 		});
 		

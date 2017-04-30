@@ -18,22 +18,33 @@ public class panelIngresoExtra extends JPanel implements ActionListener {
 	private Label lEtiqueta,
 				  lMonto,
 				  lEspacio,
-				  lAceptar;
+				  lAceptar,
+				  queda;
 	
 	private JTextField tfCantidad; 
 	private JButton btAceptar; 
 	
 	private JFrame win; 
+	private panelDatos pd;
+	private panelresultados pr;
+	private tarjetas t;
+	private int N;
 	
-	private double cantidad; 
+	private double cantidad,
+				   resultado; 
 
 	
-	public panelIngresoExtra(JFrame frame){
+	public panelIngresoExtra(JFrame frame, panelDatos pd2){
 		super(); 
 		this.setPreferredSize(new Dimension(450,200));
 		this.setBackground( Color.LIGHT_GRAY);
 		setFont(new Font("Default",Font.BOLD,18));
 
+		this.pd=pd2;
+		this.N=pd2.getN();
+		this.t=pd2.getTarjetas();
+		this.pr=pd2.getPr();
+		this.queda=pr.getLqueda();
 		this.win= frame;
 		
 		this.lMonto= new Label("");
@@ -59,10 +70,13 @@ public class panelIngresoExtra extends JPanel implements ActionListener {
 			
 				frame.dispose();
 				try{
+					for(int i=0;i<N;i++){
+						resultado+=t.obtenerTotal(i);
+					}
 					cantidad= Double.parseDouble(tfCantidad.getText());
-					System.out.println(cantidad);
-					
-					
+					pd.setIngresoM(pd.getIngresoM()+cantidad);
+					queda.setText("Resta de Ingreso Mensual $"+(pd.getIngresoM()-resultado));
+					pr.updateUI();
 				}
 				catch(NumberFormatException ex){
 					JOptionPane.showMessageDialog(null,"Verifique que sus datos sean númericos");
