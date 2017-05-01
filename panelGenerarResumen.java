@@ -38,9 +38,8 @@ public class panelGenerarResumen extends JPanel {
 		tarjeta = JOptionPane.showInputDialog("Cual es el Nombre de la Tarjeta que quiere Generar el Reporte");
 		
 		for(int i=0;i<nombre.size();i++){
-			System.out.println(nombre.get(i));
 			if(nombre.get(i).equals(tarjeta)){
-				System.out.println("dentro de if"+nombre.get(i));
+
 				
 				lnombre = new Label();
 				lnombre.setText(nombre.get(i));

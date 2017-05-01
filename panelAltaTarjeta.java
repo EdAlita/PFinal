@@ -100,7 +100,7 @@ public class panelAltaTarjeta extends JPanel {
 				lcredito=Double.parseDouble(tflcredito.getText());
 				tarjeta tmp = new tarjeta(Nombre,dpago,dcorte,lcredito);
 				tarjetas.agregarTarjeta(tmp);
-				n=tarjeta.getN();
+				n=pd.getN();
 				
 					Tarjeta[n-1] = new Label(tarjetas.obtenerNombre(n-1));
 					Tarjeta[n-1].setPreferredSize(new Dimension(150,25));
@@ -119,7 +119,7 @@ public class panelAltaTarjeta extends JPanel {
 					FPago[n-1].setPreferredSize(new Dimension(150,25));
 					pd.add(FPago[n-1]);
 					
-					pd.setN(n);
+					pd.setN(n+1);
 					pd.updateUI();
 				}catch(NumberFormatException ex){
 					JOptionPane.showMessageDialog(null,"Verifique que sus datos tengan el formato correcto");

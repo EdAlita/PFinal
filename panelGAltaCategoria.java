@@ -53,7 +53,7 @@ public class panelGAltaCategoria extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		categoria=this.tfcategoria.getText();
 		for(int i = 0; i<categorias.length;i++){
-			if(categorias[i]!=null){
+			if(categorias[i]==null){
 				categorias[i]=categoria;
 				pd.setCategorias(categorias);
 				win.dispose();

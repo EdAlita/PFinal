@@ -61,7 +61,7 @@ public class panelControles extends JPanel{
 		
 		this.add(this.btconfiguracion);
 		
-		this.btGenerarResumen = new JButton("Boton Configuracion");
+		this.btGenerarResumen = new JButton("Generar Resumen");
 		this.btGenerarResumen.setPreferredSize(new Dimension(150,50));
 		this.btGenerarResumen.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
