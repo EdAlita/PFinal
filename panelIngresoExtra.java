@@ -72,7 +72,7 @@ public class panelIngresoExtra extends JPanel implements ActionListener {
 			
 				frame.dispose();
 				try{
-					for(int i=0;i<N;i++){
+					for(int i=0;i<N-1;i++){
 						resultado+=t.obtenerTotal(i);
 					}
 					cantidad= Double.parseDouble(tfCantidad.getText());

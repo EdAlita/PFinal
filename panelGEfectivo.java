@@ -121,6 +121,7 @@ public class panelGEfectivo extends JPanel implements ActionListener{
 			}
 		}else{
 		n=pd.getN();
+		System.out.println(n);
 		tarjeta tmp = new tarjeta("Efectivo",0,0,0);
 		tarjetas.agregarTarjeta(tmp);
 		tarjetas.hacerCargo(n-1, getGasto());

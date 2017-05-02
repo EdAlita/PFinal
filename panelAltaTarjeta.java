@@ -96,7 +96,7 @@ public class panelAltaTarjeta extends JPanel {
 		this.btaceptar.setPreferredSize(new Dimension(150,30));
 		this.btaceptar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-<<<<<<< HEAD
+
 								
 		try{
 
@@ -134,7 +134,7 @@ public class panelAltaTarjeta extends JPanel {
 				FPago[n-1].setPreferredSize(new Dimension(150,25));
 				pd.add(FPago[n-1]);
 
-				pd.setN(n);
+				pd.setN(n+1);
 				
 				pd.updateUI();
 			}catch(NumberFormatException ex){
@@ -155,42 +155,6 @@ public class panelAltaTarjeta extends JPanel {
 			JOptionPane.showMessageDialog(null,"Verifique haber llenado los campos");
 		}
 				
-=======
-				frame.dispose();
-				try{
-				Nombre=tfNombre.getText();
-				dcorte=Integer.parseInt(tfdcorte.getText());
-				dpago=Integer.parseInt(tfdpago.getText());
-				lcredito=Double.parseDouble(tflcredito.getText());
-				tarjeta tmp = new tarjeta(Nombre,dpago,dcorte,lcredito);
-				tarjetas.agregarTarjeta(tmp);
-				n=pd.getN();
-				
-					Tarjeta[n-1] = new Label(tarjetas.obtenerNombre(n-1));
-					Tarjeta[n-1].setPreferredSize(new Dimension(150,25));
-					pd.add(Tarjeta[n-1]);
-					
-					pago=tarjetas.obtenerTotal(n-1);
-					Gasto[n-1]= new Label("$"+pago);
-					Gasto[n-1].setPreferredSize(new Dimension(150,25));
-					pd.add(Gasto[n-1]);
-					
-					FCorte[n-1] = new Label(" "+tarjetas.obtenerDCorte(n-1));
-					FCorte[n-1].setPreferredSize(new Dimension(150,25));
-					pd.add(FCorte[n-1]);
-					
-					FPago[n-1] = new Label(" "+tarjetas.obtenerDPago(n-1));
-					FPago[n-1].setPreferredSize(new Dimension(150,25));
-					pd.add(FPago[n-1]);
-					
-					pd.setN(n+1);
-					pd.updateUI();
-				}catch(NumberFormatException ex){
-					JOptionPane.showMessageDialog(null,"Verifique que sus datos tengan el formato correcto");
-				}catch(ArrayIndexOutOfBoundsException ex){
-					JOptionPane.showMessageDialog(null,"Has excedido el limite de trajetas");
-				}
->>>>>>> origin/master
 		}});
 		this.add(btaceptar);
 	}

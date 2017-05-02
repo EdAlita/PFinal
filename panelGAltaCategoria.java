@@ -70,14 +70,13 @@ public class panelGAltaCategoria extends JPanel implements ActionListener {
 		
 	}
 	@Override
-<<<<<<< HEAD
 	public void actionPerformed(ActionEvent e) {
 	
 		if (e.getSource()== this.btAceptar){
 			
 				categoria=this.tfcategoria.getText();
 				for(int i = 0; i<categorias.length;i++){
-					if(categorias[i]!=null){
+					if(categorias[i]==null){
 						categorias[i]=categoria;
 						pd.setCategorias(categorias);
 						win.dispose();
@@ -86,17 +85,4 @@ public class panelGAltaCategoria extends JPanel implements ActionListener {
 				}
 		} 
 	}	
-=======
-	public void actionPerformed(ActionEvent arg0) {
-		categoria=this.tfcategoria.getText();
-		for(int i = 0; i<categorias.length;i++){
-			if(categorias[i]==null){
-				categorias[i]=categoria;
-				pd.setCategorias(categorias);
-				win.dispose();
-				break;
-			}
-		}
-	}
->>>>>>> origin/master
 }

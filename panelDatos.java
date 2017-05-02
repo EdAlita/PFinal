@@ -76,28 +76,8 @@ public class panelDatos extends JPanel {
 		categorias[1]="Trabajo";
 		categorias[2]="Escuela";
 		
-<<<<<<< HEAD
-		try{
-		this.ingresoM=Double.parseDouble(JOptionPane.showInputDialog("Ingresa Saldo Mensual"));
-		}catch (NumberFormatException ex){
-			JOptionPane.showMessageDialog(null,"Verifique que sus datos sean númericos");
-			this.ingresoM=Double.parseDouble(JOptionPane.showInputDialog("Ingresa Saldo Mensual"));
-		} //if (this.ingresoM== JOptionPane.CANCEL_OPTION){
-			//System.exit(1);
-		//}
-		
-		/* if()
-		
-			int res=JOptionPane.showConfirmDialog(null, "Tus datos se perderan ¿Seguro que quieres continuar?");
-		if(res == JOptionPane.YES_OPTION){
-			interfac.setVisible(false);
-			
-			}
-		*/
-		
-=======
+
 		int tmp=JOptionPane.showConfirmDialog(null, "Iniciar Sesion anterior");
->>>>>>> origin/master
 		
 		if(tmp==JOptionPane.YES_OPTION){
 		 try {
@@ -151,23 +131,20 @@ public class panelDatos extends JPanel {
 			
 			this.ingresoM=Double.parseDouble(bf3.readLine());
 		
-<<<<<<< HEAD
+
 		this.setPreferredSize(new Dimension(700,400));
 		this.setBackground(new Color(169,169,169));
 		setFont(new Font("Default",Font.BOLD,18));
-=======
 			String linea3;
 			tmp2=0;
 			while((linea3=bf4.readLine()) != null){
 				this.categorias[tmp2]=linea3;
-				System.out.println(categorias[tmp2]);
 				++tmp2;
 			}
 			
 			this.setN(Integer.parseInt(bf5.readLine()));
 			
 			this.resultados=tmptotal;
->>>>>>> origin/master
 		
 			bf5.close();
 			bf4.close();
@@ -183,10 +160,12 @@ public class panelDatos extends JPanel {
 			e.printStackTrace();
 		}
 		}else{
+		
 			try{
 				this.ingresoM=Double.parseDouble(JOptionPane.showInputDialog("Ingresa Saldo Mensual"));
-				}catch(NumberFormatException nex){
-					JOptionPane.showMessageDialog(null, "No ha ingresado nada");
+				}catch (NumberFormatException ex){
+					JOptionPane.showMessageDialog(null,"Verifique que sus datos sean númericos");
+					this.ingresoM=Double.parseDouble(JOptionPane.showInputDialog("Ingresa Saldo Mensual"));
 				}
 		
 			this.lTarjeta = new Label("Tarjeta");

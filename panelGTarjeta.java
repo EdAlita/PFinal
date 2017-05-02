@@ -29,7 +29,8 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 	private JButton aceptar,
 					btCancelar; 
 	private String[] nombres,
-	                 categorias;
+	                 categorias,
+	                 categoriasn;
 	private gasto gastos;
 	private int n;
 	private double cargo;
@@ -50,6 +51,7 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 		this.pr=pd.getPr();
 		this.total=pr.getLresultado();
 		this.queda=pr.getLqueda();
+		this.categoriasn = new String[10];
 		this.win=win;
 		this.Pago=pd.getGasto();
 		tarjetas = pd.getTarjetas();
@@ -58,6 +60,12 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 		for(int i=0;i<n-1;i++){
 			if(tarjetas.obtenerNombre(i)!="Efectivo"){
 			nombres[i]=tarjetas.obtenerNombre(i);
+			}
+		}
+		
+		for(int j=0;j<10;j++){
+			if(categorias[j]!="null"){
+			categoriasn[j]=categorias[j];
 			}
 		}
 		
@@ -77,7 +85,7 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 		this.tarjeta.setPreferredSize(new Dimension(200,25));
 		this.add(tarjeta);
 		
-		this.cb2= new JComboBox(this.categorias);
+		this.cb2= new JComboBox(this.categoriasn);
 		this.cb2.setPreferredSize(new Dimension(200,25));
 		this.add(cb2);
 		
@@ -128,9 +136,7 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 					pd.setPresiono2(true);
 					System.out.println(pd.getN());
 					for(int j =0; j<pd.getN()-1;j++){
-						System.out.println(num+"antes");
 						num+=tarjetas.obtenerTotal(j);
-						System.out.println(num);
 					}
 					total.setText("Total $ "+num);
 					queda.setText("Resta de ingreso Mensual $ "+(pd.getIngresoM()-num));

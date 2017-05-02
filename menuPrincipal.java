@@ -11,13 +11,9 @@ public class menuPrincipal extends JFrame {
 		super("Rastreador de tarjetas");
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);
-<<<<<<< HEAD
 		this.setLocation(300, 70);
-		panelDatos pd = new panelDatos();
-=======
 		this.setLocation(300, 100);
 		panelDatos pd = new panelDatos(this);
->>>>>>> origin/master
 		panelControles pc = new panelControles(pd);
 		panelresultados pr = new panelresultados(pd,this);
 		pd.setPr(pr);

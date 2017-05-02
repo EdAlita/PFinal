@@ -70,7 +70,7 @@ public class panelConfiguracion extends JPanel{
 		setFont(new Font("Default",Font.BOLD,25));
 
 		this.win = frame; 
-		for(int i=0;i<pd.getN();i++){
+		for(int i=0;i<pd.getN()-1;i++){
 			this.nombres[i]=this.tarjetas.obtenerNombre(i);
 		}
 		
@@ -109,7 +109,6 @@ public class panelConfiguracion extends JPanel{
 		this.btAceptar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 	
-				try{
 					opcion=cbTarjetas.getSelectedItem().toString();
 					for(int j = 0;j<pd.getN();j++){
 						if(opcion==tarjetas.obtenerNombre(j)){
@@ -120,10 +119,11 @@ public class panelConfiguracion extends JPanel{
 							FPago[j].setText(null);
 							FCorte[j].setText(null);
 							pd.removeAll();
+							
 							lTarjetan = new Label("Tarjeta");
 							lTarjetan.setPreferredSize(new Dimension(150,25));
 							pd.add(lTarjetan);
-							
+							System.out.println("paso");
 							lGasto = new Label("Gastos");
 							lGasto.setPreferredSize(new Dimension(150,25));
 							pd.add(lGasto);
@@ -136,7 +136,7 @@ public class panelConfiguracion extends JPanel{
 							lFPago.setPreferredSize(new Dimension(150,25));
 							pd.add(lFPago);
 							
-							for(int k=0;k<pd.getN();k++){
+							for(int k=0;k<pd.getN()-1;k++){
 								Tarjeta[k].setText(tarjetas.obtenerNombre(k));
 								Tarjeta[k].setPreferredSize(new Dimension(150,25));
 								pd.add(Tarjeta[k]);
@@ -164,11 +164,6 @@ public class panelConfiguracion extends JPanel{
 						}
 					}
 					win.dispose();
-
-					
-				} catch (Exception ex){
-					JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna tarjeta");
-				}
 				
 			}
 		});

@@ -32,14 +32,10 @@ public class panelresultados extends JPanel {
 
 	public panelresultados(panelDatos pd, JFrame win) {
 		super();
-<<<<<<< HEAD
-		this.setPreferredSize(new Dimension(600,70));
-		this.setBackground(new Color(205,163,79));
-=======
+
 		this.setPreferredSize(new Dimension(720,150));
 		this.setBackground(new Color(205,225,254));
 		
->>>>>>> origin/master
 		this.pd=pd;
 		this.win=win;
 		this.tarjetas=pd.getTarjetas();
@@ -76,10 +72,10 @@ public class panelresultados extends JPanel {
 					}
 					for(int j=0;j<nombre.size();j++){
 						pw2.println(nombre.get(j)+","+categorias.get(j)+","+gasto.get(j));
-						pw4.println(categoria[j]);
 					}
 					for(int k=0;k<categoria.length;k++){
-						pw4.println(categoria[k]);
+						if(categoria[k]!=null){
+						pw4.println(categoria[k]);}
 					}
 					pw3.println(pd.getIngresoM());
 					pw5.close();
