@@ -109,10 +109,10 @@ public class panelGEfectivo extends JPanel implements ActionListener{
 			for(int i=0;i<tarjetas.obtenerLength();i++){ 
 			if(tarjetas.obtenerNombre(i)=="Efectivo"){
 			tarjetas.hacerCargo(i, getGasto());
-			Gasto[i].setText("$"+tarjetas.obtenerTotal(i));
-			for(int j =0; j<pd.getN();j++){
+			for(int j =0; j<pd.getN()-1;j++){
 				num=+tarjetas.obtenerTotal(j);
 			}
+			Gasto[i].setText("$"+tarjetas.obtenerTotal(i));
 			total.setText("Total $ "+num);
 			queda.setText("Resta de ingreso Mensual $ "+(pd.getIngresoM()-num));
 			pd.updateUI();
@@ -120,16 +120,15 @@ public class panelGEfectivo extends JPanel implements ActionListener{
 			break;}
 			}
 		}else{
-		
+		n=pd.getN();
 		tarjeta tmp = new tarjeta("Efectivo",0,0,0);
 		tarjetas.agregarTarjeta(tmp);
-		n=tarjeta.getN();
+		tarjetas.hacerCargo(n-1, getGasto());
+
 		Tarjeta[n-1] = new Label(tarjetas.obtenerNombre(n-1));
 		Tarjeta[n-1].setPreferredSize(new Dimension(150,25));
 		pd.add(Tarjeta[n-1]);
-		
-		tarjetas.hacerCargo(n-1, getGasto());
-		
+	
 		Gasto[n-1]= new Label("$"+tarjetas.obtenerTotal(n-1));
 		Gasto[n-1].setPreferredSize(new Dimension(150,25));
 		pd.add(Gasto[n-1]);
@@ -141,12 +140,17 @@ public class panelGEfectivo extends JPanel implements ActionListener{
 		FPago[n-1] = new Label(" "+tarjetas.obtenerDPago(n-1));
 		FPago[n-1].setPreferredSize(new Dimension(150,25));
 		pd.add(FPago[n-1]);
+		++n;
+		for(int j =0; j<pd.getN();j++){
+			
+		   num+=tarjetas.obtenerTotal(j);
+		}
+		pd.setResultado(num);
 		
-		num=+tarjetas.obtenerTotal(n-1);
+		total.setText("Total $ "+pd.getResultado());
+		queda.setText("Resta de ingreso Mensual $ "+(pd.getIngresoM()-pd.getResultado()));
 		
-		total.setText("Total $ "+num);
-		queda.setText("Resta de ingreso Mensual $ "+(pd.getIngresoM()-num));
-		
+		pr.updateUI();
 		pd.setN(n);
 		pd.updateUI();
 		pd.setPresiono(true);

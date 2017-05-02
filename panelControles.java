@@ -65,7 +65,11 @@ public class panelControles extends JPanel{
 		
 		this.add(this.btconfiguracion);
 		
+<<<<<<< HEAD
 		this.btGenerarResumen = new JButton("Reporte de tarjeta");
+=======
+		this.btGenerarResumen = new JButton("Generar Resumen");
+>>>>>>> origin/master
 		this.btGenerarResumen.setPreferredSize(new Dimension(150,50));
 		this.btGenerarResumen.setBackground(new Color(181,206,223));
 		this.btGenerarResumen.addActionListener(new ActionListener(){

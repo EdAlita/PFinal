@@ -55,7 +55,7 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 		tarjetas = pd.getTarjetas();
 		n = pd.getN();
 		nombres = new String[n];
-		for(int i=0;i<n;i++){
+		for(int i=0;i<n-1;i++){
 			if(tarjetas.obtenerNombre(i)!="Efectivo"){
 			nombres[i]=tarjetas.obtenerNombre(i);
 			}
@@ -126,8 +126,11 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 					this.gastos.setGasto(cargo);
 					Pago[i].setText("$"+tarjetas.obtenerTotal(i));
 					pd.setPresiono2(true);
-					for(int j =0; j<pd.getN();j++){
-						num=+tarjetas.obtenerTotal(j);
+					System.out.println(pd.getN());
+					for(int j =0; j<pd.getN()-1;j++){
+						System.out.println(num+"antes");
+						num+=tarjetas.obtenerTotal(j);
+						System.out.println(num);
 					}
 					total.setText("Total $ "+num);
 					queda.setText("Resta de ingreso Mensual $ "+(pd.getIngresoM()-num));
