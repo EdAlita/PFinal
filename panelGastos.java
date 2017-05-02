@@ -24,7 +24,7 @@ public class panelGastos extends JPanel{
 	public panelGastos(panelDatos pd, JFrame win){
 		super();
 		this.setPreferredSize(new Dimension(425,200));
-		this.setBackground( Color.LIGHT_GRAY);
+		this.setBackground(new Color(182,161,158));
 		this.setFont(new Font("Default",Font.BOLD,18));
 		this.win=win;
 		
@@ -33,6 +33,7 @@ public class panelGastos extends JPanel{
 		this.add(this.mensaje);
 		
 		this.tarjeta= new JButton ("Gasto con Tarjeta");
+		this.tarjeta.setBackground(new Color(218,210,206));
 		this.tarjeta.setPreferredSize(new Dimension(200,50));
 		this.tarjeta.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -42,6 +43,7 @@ public class panelGastos extends JPanel{
 		this.add(this.tarjeta);
 		
 		this.efectivo= new JButton("Gasto en efectivo");
+		this.efectivo.setBackground(new Color(218,210,206));
 		this.efectivo.setPreferredSize(new Dimension(200,50));
 		this.efectivo.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -51,6 +53,7 @@ public class panelGastos extends JPanel{
 		this.add(this.efectivo);
 		
 		this.altaCategoria= new JButton("Dar de alta una categoría"); 
+		this.altaCategoria.setBackground(new Color(218,210,206));
 		this.altaCategoria.setPreferredSize(new Dimension(200,50));
 		this.altaCategoria.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -60,6 +63,7 @@ public class panelGastos extends JPanel{
 		this.add(this.altaCategoria);
 		
 		this.regresar= new JButton("Regresar");
+		this.regresar.setBackground(new Color(218,210,206));
 		this.regresar.setPreferredSize(new Dimension(200,50));
 		this.regresar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){

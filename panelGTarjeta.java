@@ -26,7 +26,8 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 	private JComboBox cb,
 					  cb2;
 	private tarjetas tarjetas;
-	private JButton aceptar; 
+	private JButton aceptar,
+					btCancelar; 
 	private String[] nombres,
 	                 categorias;
 	private gasto gastos;
@@ -39,8 +40,8 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 	private double num;
 	public panelGTarjeta(panelDatos pd,JFrame win){
 		super();
-		this.setPreferredSize(new Dimension(425,200));
-		this.setBackground( Color.LIGHT_GRAY);
+		this.setPreferredSize(new Dimension(425,200));		
+		this.setBackground(new Color(239,217,193));
 		this.setFont(new Font("Default",Font.BOLD,18));
 		this.categorias=pd.getCategorias();
 		this.gastos=pd.getGastos();
@@ -88,7 +89,23 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 		this.gasto.setPreferredSize(new Dimension(200,25));
 		this.add(gasto);
 		
+		this.btCancelar= new JButton("Regresar");
+		this.btCancelar.setBackground(Color.WHITE);
+		this.btCancelar.setPreferredSize(new Dimension(170,30));
+		this.btCancelar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				int tmp=JOptionPane.showConfirmDialog(null, "Tus datos se perderan");
+				if(tmp==JOptionPane.YES_OPTION){
+					win.dispose();
+				}
+			}
+		});
+		this.add(btCancelar);
+		
+		
 		this.aceptar= new JButton("Aceptar");
+		this.aceptar.setBackground(Color.WHITE);
+		this.aceptar.setPreferredSize(new Dimension(170,30));
 		this.aceptar.addActionListener(this);
 		this.add(this.aceptar);
 		
@@ -97,6 +114,7 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==this.aceptar){
+			try{
 			for(int i=0;i<this.tarjetas.obtenerLength();i++){
 				this.hola=this.cb.getSelectedItem().toString();
 				if(hola==tarjetas.obtenerNombre(i)){
@@ -124,7 +142,14 @@ public class panelGTarjeta extends JPanel implements ActionListener{
 				}
 			}
 		}
-		
+		catch(NumberFormatException ev){
+			JOptionPane.showMessageDialog(null,"Verifica que los datos sean númericos");
+			gasto.setText(null);
+			}
+			catch(Exception ex){
+				JOptionPane.showMessageDialog(null,"Verifique haber llenado los campos");
+			}	
+		}
 	}
 
 }

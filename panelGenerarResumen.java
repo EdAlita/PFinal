@@ -18,7 +18,8 @@ public class panelGenerarResumen extends JPanel {
 	private gasto gastos;
 	private Label lnombre,
 				  lgasto,
-				  lcategoria;
+				  lcategoria,
+				  lNo;
 	private int num;
 	private ArrayList<String> nombre,
 	 					categorias;
@@ -28,7 +29,7 @@ public class panelGenerarResumen extends JPanel {
 	public panelGenerarResumen(panelDatos pd, JFrame win) {
 		super();
 		this.setPreferredSize(new Dimension(625,400));
-		this.setBackground( Color.LIGHT_GRAY);
+		this.setBackground(new Color(169,183,192));
 		this.setFont(new Font("Default",Font.BOLD,18));
 		this.gastos=pd.getGastos();
 		this.nombre=gastos.getNombre();
@@ -36,6 +37,7 @@ public class panelGenerarResumen extends JPanel {
 		this.gasto=gastos.getGasto();
 		
 		tarjeta = JOptionPane.showInputDialog("Cual es el Nombre de la Tarjeta que quiere Generar el Reporte");
+		
 		
 		for(int i=0;i<nombre.size();i++){
 			System.out.println(nombre.get(i));
@@ -57,15 +59,11 @@ public class panelGenerarResumen extends JPanel {
 				num++;
 				this.updateUI();
 			}
-		}
-		
+
 		//this.setPreferredSize(new Dimension(625,num*25+100));
 	
 		
-       
-        
-        
-		
-	}
+			}  
+   		}
 
-}
+	}

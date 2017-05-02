@@ -104,13 +104,30 @@ public class panelDatos extends JPanel {
 		categorias[1]="Trabajo";
 		categorias[2]="Escuela";
 		
+		try{
 		this.ingresoM=Double.parseDouble(JOptionPane.showInputDialog("Ingresa Saldo Mensual"));
+		}catch (NumberFormatException ex){
+			JOptionPane.showMessageDialog(null,"Verifique que sus datos sean númericos");
+			this.ingresoM=Double.parseDouble(JOptionPane.showInputDialog("Ingresa Saldo Mensual"));
+		} //if (this.ingresoM== JOptionPane.CANCEL_OPTION){
+			//System.exit(1);
+		//}
+		
+		/* if()
+		
+			int res=JOptionPane.showConfirmDialog(null, "Tus datos se perderan ¿Seguro que quieres continuar?");
+		if(res == JOptionPane.YES_OPTION){
+			interfac.setVisible(false);
+			
+			}
+		*/
+		
 		
 		this.gasto=new gasto();
 		tarjetas = new tarjetas();
 		
 		this.setPreferredSize(new Dimension(700,400));
-		this.setBackground(Color.gray);
+		this.setBackground(new Color(169,169,169));
 		setFont(new Font("Default",Font.BOLD,18));
 		
 		this.lTarjeta = new Label("Tarjeta");

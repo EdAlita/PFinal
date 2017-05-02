@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -16,10 +17,14 @@ public class panelGEfectivo extends JPanel implements ActionListener{
 	private Label etiqueta,
 				  cantidad,
 				  total,
-				  queda; 
+				  queda,
+				  lEspacio,
+				  lEspcacio2;
+	
 	private JTextField gasto; 
 	
-	private JButton aceptar; 
+	private JButton btAceptar,
+					btCancelar; 
 	private panelDatos pd;
 	private tarjetas tarjetas;
 	private Label[] Tarjeta,
@@ -44,13 +49,17 @@ public class panelGEfectivo extends JPanel implements ActionListener{
 		this.queda=pr.getLqueda();
 		
 		this.setPreferredSize(new Dimension(425,200));
-		this.setBackground( Color.LIGHT_GRAY);
+		this.setBackground(new Color(239,217,193));
 		this.setFont(new Font("Default",Font.BOLD,18));
 
 		this.etiqueta= new Label("Indique la cantidad que gastó");
-		this.etiqueta.setPreferredSize(new Dimension(400,25));
+		this.etiqueta.setPreferredSize(new Dimension(375,25));
 		this.add(this.etiqueta);
 
+		this.lEspacio= new Label("");
+		this.lEspacio.setPreferredSize(new Dimension(400,10));
+		this.add(this.lEspacio);
+		
 		this.cantidad= new Label ("Cantidad"); 
 		this.cantidad.setPreferredSize(new Dimension(200,25));
 		this.add(this.cantidad);
@@ -59,10 +68,31 @@ public class panelGEfectivo extends JPanel implements ActionListener{
 		this.gasto.setPreferredSize(new Dimension(200,25));
 		this.add(this.gasto);
 		
-		this.aceptar= new JButton("Aceptar");
-		this.aceptar.setPreferredSize(new Dimension(200,25));
-		this.aceptar.addActionListener(this);
-		this.add(this.aceptar);
+		this.lEspcacio2= new Label("");
+		this.lEspcacio2.setPreferredSize(new Dimension(400,10));
+		this.add(this.lEspcacio2);
+
+		this.btCancelar= new JButton("Regresar");
+		this.btCancelar.setBackground(Color.WHITE);
+		this.btCancelar.setPreferredSize(new Dimension(175,35));
+		this.btCancelar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				int tmp=JOptionPane.showConfirmDialog(null, "Tus datos se perderan");
+				if(tmp==JOptionPane.YES_OPTION){
+					frame.dispose();
+				}
+			}
+		});
+		
+		this.add(this.btCancelar);
+
+		
+		this.btAceptar= new JButton("Aceptar");
+		this.btAceptar.setBackground(Color.white);
+		this.btAceptar.setPreferredSize(new Dimension(175,35));
+		this.btAceptar.addActionListener(this);
+		this.add(this.btAceptar);
+		
 	}
 	
 
@@ -74,7 +104,7 @@ public class panelGEfectivo extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		
+		try{
 		if(pd.isPresiono()){
 			for(int i=0;i<tarjetas.obtenerLength();i++){ 
 			if(tarjetas.obtenerNombre(i)=="Efectivo"){
@@ -120,7 +150,16 @@ public class panelGEfectivo extends JPanel implements ActionListener{
 		pd.setN(n);
 		pd.updateUI();
 		pd.setPresiono(true);
+		
 		this.frame.dispose();
 		}
+		} catch (NumberFormatException ex){
+			JOptionPane.showMessageDialog(null,"Verifique que sus datos sean númericos");
+			this.gasto.setText(null);
+		}
+		 catch (Exception d){
+			 JOptionPane.showMessageDialog(null,"Verifique haber llenado los campos");
+		 }
+
 	}
 		}

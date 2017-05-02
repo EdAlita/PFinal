@@ -10,14 +10,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class panelGAltaCategoria extends JPanel implements ActionListener {
 	
 	private Label lintruccion,
-                  lcategoria;
+                  lcategoria,
+                  lespacio;
 	private TextField tfcategoria;
-	private JButton btAceptar;
+	private JButton btAceptar,
+					btRegresar;
 	private JFrame win;
 	private panelDatos pd;
 	private String[] categorias;
@@ -28,37 +31,58 @@ public class panelGAltaCategoria extends JPanel implements ActionListener {
 		this.categorias=pd.getCategorias();
 		
 		this.setPreferredSize(new Dimension(425,200));
-		this.setBackground( Color.LIGHT_GRAY);
+		this.setBackground(new Color(239,217,193));
 		this.setFont(new Font("Default",Font.BOLD,18));
 		
 		this.lintruccion = new Label("Pon la categoria que quieres agregar");
-		this.lintruccion.setPreferredSize(new Dimension(400,25));
+		this.lintruccion.setPreferredSize(new Dimension(400,30));
 		this.add(lintruccion);
 		
 		this.lcategoria = new Label("Categoria: ");
-		this.lcategoria.setPreferredSize(new Dimension(200,25));
+		this.lcategoria.setPreferredSize(new Dimension(200,30));
 		this.add(lcategoria);
 		
 		this.tfcategoria = new TextField();
-		this.tfcategoria.setPreferredSize(new Dimension(200,25));
+		this.tfcategoria.setPreferredSize(new Dimension(200,30));
 		this.add(tfcategoria);
 		
+		
+		
+		this.btRegresar = new JButton("Regresar");
+		this.btRegresar.setBackground(Color.WHITE);
+		this.btRegresar.setPreferredSize(new Dimension(175,30));
+		this.btRegresar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				int tmp=JOptionPane.showConfirmDialog(null, "Tus datos se perderan");
+				if(tmp==JOptionPane.YES_OPTION){
+					win.dispose();
+				}
+			}
+		});
+
+		this.add(btRegresar);
+		
 		this.btAceptar = new JButton("Aceptar");
-		this.btAceptar.setPreferredSize(new Dimension(200,25));
+		this.btAceptar.setBackground(Color.WHITE);
+		this.btAceptar.setPreferredSize(new Dimension(175,30));
 		this.btAceptar.addActionListener(this);
 		this.add(btAceptar);
 		
 	}
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		categoria=this.tfcategoria.getText();
-		for(int i = 0; i<categorias.length;i++){
-			if(categorias[i]!=null){
-				categorias[i]=categoria;
-				pd.setCategorias(categorias);
-				win.dispose();
-				break;
-			}
-		}
-	}
+	public void actionPerformed(ActionEvent e) {
+	
+		if (e.getSource()== this.btAceptar){
+			
+				categoria=this.tfcategoria.getText();
+				for(int i = 0; i<categorias.length;i++){
+					if(categorias[i]!=null){
+						categorias[i]=categoria;
+						pd.setCategorias(categorias);
+						win.dispose();
+						break;
+					}
+				}
+		} 
+	}	
 }

@@ -17,8 +17,8 @@ public class panelresultados extends JPanel {
 
 	public panelresultados(panelDatos pd) {
 		super();
-		this.setPreferredSize(new Dimension(600,125));
-		this.setBackground(new Color(205,225,254));
+		this.setPreferredSize(new Dimension(600,70));
+		this.setBackground(new Color(205,163,79));
 		this.pd=pd;
 		this.tarjetas=pd.getTarjetas();
 		

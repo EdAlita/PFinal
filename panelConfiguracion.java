@@ -65,8 +65,8 @@ public class panelConfiguracion extends JPanel{
 		this.gastos=pd.getGastos();
 		this.tarjetas=pd.getTarjetas();
 		this.nombres= new String[pd.getN()];
-		
-		this.setBackground( Color.LIGHT_GRAY);
+
+		this.setBackground(new Color(182,161,158));
 		setFont(new Font("Default",Font.BOLD,25));
 
 		this.win = frame; 
@@ -92,7 +92,7 @@ public class panelConfiguracion extends JPanel{
 		
 		this.btRegresar= new JButton("Regresar"); 
 		this.btRegresar.setPreferredSize(new Dimension(150,30));
-		
+		this.btRegresar.setBackground(new Color(218,210,206));
 		this.add(this.btRegresar);
 		this.btRegresar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -104,63 +104,72 @@ public class panelConfiguracion extends JPanel{
 		});
 		
 		this.btAceptar= new JButton("Aceptar"); 
+		this.btAceptar.setBackground(new Color(218,210,206));
 		this.btAceptar.setPreferredSize(new Dimension(150,30));
 		this.btAceptar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				opcion=cbTarjetas.getSelectedItem().toString();
-				for(int j = 0;j<pd.getN();j++){
-					if(opcion==tarjetas.obtenerNombre(j)){
-						pd.setN(n-1);
-						tarjetas.eliminar(j);
-						Tarjeta[j].setText(null);
-						Gasto[j].setText(null);
-						FPago[j].setText(null);
-						FCorte[j].setText(null);
-						pd.removeAll();
-						lTarjetan = new Label("Tarjeta");
-						lTarjetan.setPreferredSize(new Dimension(150,25));
-						pd.add(lTarjetan);
-						
-						lGasto = new Label("Gastos");
-						lGasto.setPreferredSize(new Dimension(150,25));
-						pd.add(lGasto);
-						
-						lFCorte = new Label("Fecha Corte");
-						lFCorte.setPreferredSize(new Dimension(150,25));
-						pd.add(lFCorte);
-						
-						lFPago = new Label("Fecha Pago");
-						lFPago.setPreferredSize(new Dimension(150,25));
-						pd.add(lFPago);
-						
-						for(int k=0;k<pd.getN();k++){
-							Tarjeta[k].setText(tarjetas.obtenerNombre(k));
-							Tarjeta[k].setPreferredSize(new Dimension(150,25));
-							pd.add(Tarjeta[k]);
+	
+				try{
+					opcion=cbTarjetas.getSelectedItem().toString();
+					for(int j = 0;j<pd.getN();j++){
+						if(opcion==tarjetas.obtenerNombre(j)){
+							pd.setN(n-1);
+							tarjetas.eliminar(j);
+							Tarjeta[j].setText(null);
+							Gasto[j].setText(null);
+							FPago[j].setText(null);
+							FCorte[j].setText(null);
+							pd.removeAll();
+							lTarjetan = new Label("Tarjeta");
+							lTarjetan.setPreferredSize(new Dimension(150,25));
+							pd.add(lTarjetan);
 							
-							Gasto[k].setText("$"+tarjetas.obtenerTotal(k));
-							Gasto[k].setPreferredSize(new Dimension(150,25));
-							pd.add(Gasto[k]);
+							lGasto = new Label("Gastos");
+							lGasto.setPreferredSize(new Dimension(150,25));
+							pd.add(lGasto);
 							
-							FCorte[k].setText(""+tarjetas.obtenerDCorte(k));
-							FCorte[k].setPreferredSize(new Dimension(150,25));
-							pd.add(FCorte[k]);
+							lFCorte = new Label("Fecha Corte");
+							lFCorte.setPreferredSize(new Dimension(150,25));
+							pd.add(lFCorte);
 							
-							FPago[k].setText(""+tarjetas.obtenerDPago(k));
-							FPago[k].setPreferredSize(new Dimension(150,25));
-							pd.add(FPago[k]);
+							lFPago = new Label("Fecha Pago");
+							lFPago.setPreferredSize(new Dimension(150,25));
+							pd.add(lFPago);
 							
-							num+=tarjetas.obtenerTotal(k);
+							for(int k=0;k<pd.getN();k++){
+								Tarjeta[k].setText(tarjetas.obtenerNombre(k));
+								Tarjeta[k].setPreferredSize(new Dimension(150,25));
+								pd.add(Tarjeta[k]);
+								
+								Gasto[k].setText("$"+tarjetas.obtenerTotal(k));
+								Gasto[k].setPreferredSize(new Dimension(150,25));
+								pd.add(Gasto[k]);
+								
+								FCorte[k].setText(""+tarjetas.obtenerDCorte(k));
+								FCorte[k].setPreferredSize(new Dimension(150,25));
+								pd.add(FCorte[k]);
+								
+								FPago[k].setText(""+tarjetas.obtenerDPago(k));
+								FPago[k].setPreferredSize(new Dimension(150,25));
+								pd.add(FPago[k]);
+								
+								num+=tarjetas.obtenerTotal(k);
+							}
+							
+							queda.setText("Resta de ingreso Mensual $ "+(pd.getIngresoM()-num));
+							total.setText("Total $ "+num);
+							
+							pr.updateUI();
+							pd.revalidate();
 						}
-						
-						queda.setText("Resta de ingreso Mensual $ "+(pd.getIngresoM()-num));
-						total.setText("Total $ "+num);
-						
-						pr.updateUI();
-						pd.revalidate();
 					}
+					win.dispose();
+
+					
+				} catch (Exception ex){
+					JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna tarjeta");
 				}
-				win.dispose();
+				
 			}
 		});
 		this.add(this.btAceptar);

@@ -37,7 +37,8 @@ public class panelIngresoExtra extends JPanel implements ActionListener {
 	public panelIngresoExtra(JFrame frame, panelDatos pd2){
 		super(); 
 		this.setPreferredSize(new Dimension(450,200));
-		this.setBackground( Color.LIGHT_GRAY);
+		this.setBackground(new Color(182,161,158));
+
 		setFont(new Font("Default",Font.BOLD,18));
 
 		this.pd=pd2;
@@ -64,6 +65,7 @@ public class panelIngresoExtra extends JPanel implements ActionListener {
 		this.add(this.lEspacio);
 		
 		this.btAceptar= new JButton("Aceptar");
+		this.btAceptar.setBackground(new Color(218,210,206));
 		this.btAceptar.setPreferredSize(new Dimension(200,30));
 		this.btAceptar.addActionListener(new ActionListener(){ 		
 			public void actionPerformed(ActionEvent arg0) {
